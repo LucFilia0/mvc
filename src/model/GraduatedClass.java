@@ -2,16 +2,22 @@ package model;
 
 import java.util.ArrayList;
 
-public class GraduatedClass {
+import controller.obs.Observable;
+import controller.obs.Observer;
+
+public class GraduatedClass implements Observable {
 
 	// Attributes
 
 	private ArrayList<GraduatedStudent> data;
+
+	private ArrayList<Observer> observers;
 	
 	// Constructor
 
 	public GraduatedClass() {
 		this.data = new ArrayList<GraduatedStudent>();
+		this.observers = new ArrayList<Observer>();
 	}
 
 	// Methods
@@ -39,5 +45,24 @@ public class GraduatedClass {
 
 	public ArrayList<GraduatedStudent> getData() {
 		return this.data;
+	}
+
+	// Observable methods
+
+	@Override
+	public void addObserver(Observer observer) {
+		this.observers.add(observer);
+	}
+
+	@Override
+	public void removeObserver(Observer observer) {
+		this.observers.remove(observer);
+	}
+
+	@Override
+	public void notifyObservers() {
+		this.observers.forEach((observer) -> {
+			observer.update();
+		});
 	}
 }
