@@ -19,6 +19,8 @@ public class Window extends JFrame {
 
 	public static final int WIN_HEIGHT = 600;
 
+	public static final int OUTSET = 25;
+
 	// Attributes
 
 	private FormPanel		formPanel;
@@ -41,7 +43,7 @@ public class Window extends JFrame {
 		this.setResizable(false);
 
 		// Panels
-		this.formPanel		= new FormPanel("Saisie d'anciens étudiants");
+		this.formPanel		= new FormPanel("Saisie d'anciens étudiants", graduatedClass);
 		this.histogramPanel = new HistogramPanel("Bac d'origine", graduatedClass);
 		this.listPanel 		= new ListPanel("Liste des anciens étudiants", graduatedClass);
 		this.pieChartPanel 	= new PieChartPanel("Départements d'origine", graduatedClass);
@@ -64,5 +66,23 @@ public class Window extends JFrame {
 		desktop.add(this.pieChartPanel);
 
 		this.setContentPane(desktop);
+	}
+
+	// Getters
+
+	public FormPanel getFormPanel() {
+		return this.formPanel;
+	}
+
+	public HistogramPanel getHistogramPanel() {
+		return this.histogramPanel;
+	}
+
+	public ListPanel getListPanel() {
+		return this.listPanel;
+	}
+
+	public PieChartPanel getPieChartPanel() {
+		return this.pieChartPanel;
 	}
 }

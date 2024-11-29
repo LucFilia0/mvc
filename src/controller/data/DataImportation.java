@@ -1,4 +1,4 @@
-package controller;
+package controller.data;
 
 import model.GraduatedClass;
 import model.GraduatedStudent;
