@@ -90,12 +90,17 @@ public class ListPanel extends JInternalFrame implements Observer {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			controller = new DelListController(graduatedClass);
-			ArrayList<String> data = new ArrayList<>();
+			GraduatedStudent selectedStudent = list.getSelectedValue();
 
-			data.add(String.valueOf(list.getSelectedValue().getNumber()));
-
-			controller.control(data);
+			if(selectedStudent != null) {
+				controller = new DelListController(graduatedClass);
+				ArrayList<String> data = new ArrayList<>();
+	
+				data.add(String.valueOf(selectedStudent.getNumber()));
+	
+				controller.control(data);
+			}
+			
 		}
 		
 	}

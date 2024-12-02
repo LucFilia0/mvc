@@ -11,14 +11,8 @@ public class App {
 
         try {
             GraduatedClass gc = DataImportation.importGraduatedClassFrom(new File("data/promoBUT.csv"));
-
             Window window = new Window("Zikette", gc);
-
-            gc.addObserver(window.getHistogramPanel());
-            gc.addObserver(window.getListPanel());
-            gc.addObserver(window.getPieChartPanel());    
-            
-            window.setVisible(true); // TODO
+            window.setVisible(true);
         } catch(FileNotFoundException ex) {
             System.err.println(ex.getMessage());
         }

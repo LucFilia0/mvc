@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import controller.obs.Observable;
 import controller.obs.Observer;
+import exception.StudentNotFoundException;
 
 public class GraduatedClass implements Observable {
 
@@ -30,7 +31,7 @@ public class GraduatedClass implements Observable {
 		this.data.remove(student);
 	}
 
-	public GraduatedStudent get(int number) {
+	public GraduatedStudent get(int number) throws StudentNotFoundException {
 		int length = this.data.size();
 		int i = 0;
 		GraduatedStudent student = null;
@@ -38,6 +39,11 @@ public class GraduatedClass implements Observable {
 		while(student == null && i < length) {
 			if(this.data.get(i).getNumber() == number)
 				student = this.data.get(i);
+			++i;
+		}
+
+		if(student == null) {
+			throw new StudentNotFoundException(number);
 		}
 
 		return student;
