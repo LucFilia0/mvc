@@ -48,6 +48,10 @@ public class Window extends JFrame {
 		this.listPanel 		= new ListPanel("Liste des anciens étudiants", graduatedClass);
 		this.pieChartPanel 	= new PieChartPanel("Départements d'origine", graduatedClass);
 
+		graduatedClass.addObserver(this.histogramPanel);
+		graduatedClass.addObserver(this.listPanel);
+		graduatedClass.addObserver(this.pieChartPanel);
+
 		this.addElements();
 	}
 

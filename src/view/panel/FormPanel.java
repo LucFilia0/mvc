@@ -4,6 +4,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
@@ -84,11 +85,13 @@ public class FormPanel extends JInternalFrame {
 
 		addStudentLabel.add(new JLabel("Ajouter un ancien étudiant :"));
 
-		this.addStudentNumber 		= new JSpinner();
+		// SpinnerNumberModel spModel = new SpinnerNumberModel(0, 0, null, 1); // TODO
+
+		this.addStudentNumber 		= new JSpinner(new SpinnerNumberModel(0, 0, null, 1));
 		this.addStudentFirstName 	= new JTextField();
 		this.addStudentLastName		= new JTextField();
 		this.addStudentDegree		= new JComboBox<String>(new String[] {"---", "G", "T", "A", "Pro"});
-		this.addStudentDepartment	= new JSpinner();
+		this.addStudentDepartment	= new JSpinner(new SpinnerNumberModel(0, 0, null, 1));
 
 		int spinnerWidth	= 50;
 		int spinnerHeight	= 20;
@@ -115,7 +118,7 @@ public class FormPanel extends JInternalFrame {
 
 		deleteStudentLabel.add(new JLabel("Supprimer un ancien étudiant : "));
 
-		this.deleteStudentNumber = new JSpinner();
+		this.deleteStudentNumber = new JSpinner(new SpinnerNumberModel(0, 0, null, 1));
 
 		JButton deleteStudentButton = new JButton("Supprimer");
 
@@ -135,17 +138,41 @@ public class FormPanel extends JInternalFrame {
 
 		// Actions
 
-		addStudentButton.addActionListener(new AddStudentListener());
+		addStudentButton.addActionListener(new AddStudentListener(this));
 
-		deleteStudentButton.addActionListener(new DeleteStudentListener());
+		deleteStudentButton.addActionListener(new DeleteStudentListener(this));
+	}
+
+	public void clearAddPanel() {
+		this.addStudentNumber.setValue(0);
+		this.addStudentFirstName.setText("");
+		this.addStudentLastName.setText("");
+		this.addStudentDegree.setSelectedIndex(0);
+		this.addStudentDepartment.setValue(0);
+		this.repaint();
+	}
+
+	public void clearDelPanel() {
+		this.deleteStudentNumber.setValue(0);
+		this.repaint();
 	}
 
 	private class AddStudentListener implements ActionListener {
 
+		// Attributes
+
+		private FormPanel formPanel;
+
+		// Constructor
+
+		AddStudentListener(FormPanel formPanel) {
+			this.formPanel = formPanel;
+		}
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			controller = new AddFormController(graduatedClass);
+			controller = new AddFormController(graduatedClass, formPanel);
 			ArrayList<String> data = new ArrayList<>();
 
 			data.add(String.valueOf(addStudentNumber.getValue()));
@@ -161,10 +188,20 @@ public class FormPanel extends JInternalFrame {
 
 	private class DeleteStudentListener implements ActionListener {
 
+		// Attributes
+
+		private FormPanel formPanel;
+
+		// Constructor
+
+		DeleteStudentListener(FormPanel formPanel) {
+			this.formPanel = formPanel;
+		}
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
-			controller = new DelFormController(graduatedClass);
+			controller = new DelFormController(graduatedClass, formPanel);
 			ArrayList<String> data = new ArrayList<>();
 
 			data.add(String.valueOf(deleteStudentNumber.getValue()));
