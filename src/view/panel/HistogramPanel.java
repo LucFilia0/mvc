@@ -20,7 +20,7 @@ public class HistogramPanel extends JInternalFrame implements Observer {
 		// Constructor
 
 		Histogram(String title, DefaultCategoryDataset dataset) {
-			super(ChartFactory.createBarChart3D(title, "Bac", "Nombre", dataset, PlotOrientation.VERTICAL, true, false, false));
+			super(ChartFactory.createBarChart(title, "Bac", "Nombre", dataset, PlotOrientation.VERTICAL, true, false, false));
 		}
 	}
 	
@@ -56,11 +56,6 @@ public class HistogramPanel extends JInternalFrame implements Observer {
 		this.graduatedClass = graduatedClass;
 		this.dataset = new DefaultCategoryDataset();
 
-		this.t_count = 0;
-		this.g_count = 0;
-		this.a_count = 0;
-		this.pro_count = 0;
-
 		this.update();
 	}
 
@@ -68,6 +63,11 @@ public class HistogramPanel extends JInternalFrame implements Observer {
 	public void update() {
 
 		this.dataset.clear();
+
+		this.t_count = 0;
+		this.g_count = 0;
+		this.a_count = 0;
+		this.pro_count = 0;
 		
 		this.graduatedClass.getData().forEach( (student) -> {
 			switch(student.getDegree().toUpperCase()) {
@@ -78,11 +78,11 @@ public class HistogramPanel extends JInternalFrame implements Observer {
 				default 	: break;
 			}
 		});
-		
-		this.dataset.addValue(this.g_count, "G", " ");
-		this.dataset.addValue(this.t_count, "T", " ");
-		this.dataset.addValue(this.a_count, "A", " ");
-		this.dataset.addValue(this.pro_count, "Pro", " ");
+
+		this.dataset.setValue(this.g_count, "G", " ");
+		this.dataset.setValue(this.t_count, "T", " ");
+		this.dataset.setValue(this.a_count, "A", " ");
+		this.dataset.setValue(this.pro_count, "Pro", " ");
 
 		this.add(new Histogram(this.title, this.dataset));
 	}

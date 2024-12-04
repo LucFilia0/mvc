@@ -9,14 +9,28 @@ import model.GraduatedStudent;
 import view.panel.FormPanel;
 import view.popup.ErrorPopup;
 
+/**
+ * This class extends the {@link controller.AbstractController} and is used from the formPanel
+ * to add a {@link model.GraduatedStudent GraduatedStudent} to the {@link model.GraduatedClass GraduatedClass}
+ * 
+ * @author Luc le Manifik 
+ */
 public class AddFormController extends AbstractController {
 
 	// Attributes
 
+	/**
+	 * The FormPanel that will be updated after adding a new student.
+	 */
 	private FormPanel formPanel;
 
 	// Constructor
 
+	/**
+	 * Creates a new AddFormController.
+	 * @param graduatedClass The GraduatedClass where the new student is added
+	 * @param formPanel The FormPanel wich will be updated after adding the student
+	 */
 	public AddFormController(GraduatedClass graduatedClass, FormPanel formPanel) {
 		super(graduatedClass);
 		this.formPanel = formPanel;

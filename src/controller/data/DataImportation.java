@@ -7,8 +7,19 @@ import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
-public class DataImportation {
+/**
+ * Abstract class created to store the data importation functions.
+ * 
+ * @author Luc le Manifik
+ */
+public abstract class DataImportation {
 
+	/**
+	 * Imports a GraduatedClass' data from a file.	
+	 * @param file The file from which are imported the data
+	 * @return A GraduatedClass containing all the informations from the file
+	 * @throws FileNotFoundException Threw if the File is not found or does not exist
+	 */
 	public static GraduatedClass importGraduatedClassFrom(File file) throws FileNotFoundException {
 
 		GraduatedClass cl = new GraduatedClass();
@@ -24,7 +35,7 @@ public class DataImportation {
 
 		while(scanner.hasNextLine()) {
 			student = createStudentFromLine(scanner.nextLine());
-			if(student != null)
+			if(student != null) // Student is not added if there are missing informations
 				cl.add(student);
 		}
 
@@ -32,6 +43,11 @@ public class DataImportation {
 		return cl;
 	}
 
+	/**
+	 * Creates a GraduatedStudent from a line of the file.
+	 * @param line The line containing all the informations of the student
+	 * @return The GraduatedStudent completed
+	 */
 	private static GraduatedStudent createStudentFromLine(String line) {
 
 		GraduatedStudent student = null;

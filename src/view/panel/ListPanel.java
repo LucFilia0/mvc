@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListPanel extends JInternalFrame implements Observer {
 	
@@ -90,6 +91,17 @@ public class ListPanel extends JInternalFrame implements Observer {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
+			controller = new DelListController(graduatedClass);
+			ArrayList<String> data = new ArrayList<>();
+
+			List<GraduatedStudent> selectedStudents = list.getSelectedValuesList();
+
+			for (GraduatedStudent student : selectedStudents) {
+				data.clear();
+				data.add(String.valueOf(student.getNumber()));
+				controller.control(data);
+			}
+/* 			
 			GraduatedStudent selectedStudent = list.getSelectedValue();
 
 			if(selectedStudent != null) {
@@ -99,7 +111,7 @@ public class ListPanel extends JInternalFrame implements Observer {
 				data.add(String.valueOf(selectedStudent.getNumber()));
 	
 				controller.control(data);
-			}
+			} */
 			
 		}
 		
