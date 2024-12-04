@@ -6,6 +6,11 @@ import java.io.FileNotFoundException;
 
 import controller.data.DataImportation;
 
+/**
+ * This class starts the application
+ * 
+ * @author Luc le Manifik
+ */
 public class App {
     public static void main(String[] args) throws Exception {
 

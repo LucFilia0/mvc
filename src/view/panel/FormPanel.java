@@ -21,12 +21,23 @@ import controller.ctl.AddFormController;
 import controller.ctl.DelFormController;
 import model.GraduatedClass;
 
+/**
+ * The panel from which we can create a new student or remove one from its number.
+ * 
+ * @author Luc le Manifik
+ */
 public class FormPanel extends JInternalFrame {
 
 	// Class attributes
 
+	/**
+	 * FormPanel Width
+	 */
 	public static final int FORM_PAN_WIDTH = 900;
 
+	/**
+	 * FormPanel height
+	 */
 	public static final int FORM_PAN_HEIGHT = 130;
 
 	// Attributes
@@ -49,6 +60,11 @@ public class FormPanel extends JInternalFrame {
 
 	// Constructor
 
+	/**
+	 * Creates a new FormPanel.
+	 * @param title The FormPanel title
+	 * @param graduatedClass The GraduatedClass that the panel will modify
+	 */
 	public FormPanel(String title, GraduatedClass graduatedClass) {
 		super(title);
 
@@ -143,6 +159,9 @@ public class FormPanel extends JInternalFrame {
 		deleteStudentButton.addActionListener(new DeleteStudentListener(this));
 	}
 
+	/**
+	 * Clears the 'adding student' part's inputs.
+	 */
 	public void clearAddPanel() {
 		this.addStudentNumber.setValue(0);
 		this.addStudentFirstName.setText("");
@@ -152,19 +171,32 @@ public class FormPanel extends JInternalFrame {
 		this.repaint();
 	}
 
+	/**
+	 * Clears the 'deleting student' part's inputs
+	 */
 	public void clearDelPanel() {
 		this.deleteStudentNumber.setValue(0);
 		this.repaint();
 	}
 
+	/**
+	 * Intern class which implements ActionListener, performs when the Add button is pressed.
+	 */
 	private class AddStudentListener implements ActionListener {
 
 		// Attributes
 
+		/**
+		 * The FormPanel to modify once the action is performed.
+		 */
 		private FormPanel formPanel;
 
 		// Constructor
 
+		/**
+		 * Creates a new AddStudentListener.
+		 * @param formPanel The FormPanel to modify once the action is performed
+		 */
 		AddStudentListener(FormPanel formPanel) {
 			this.formPanel = formPanel;
 		}
@@ -186,14 +218,24 @@ public class FormPanel extends JInternalFrame {
 		
 	}
 
+	/**
+	 * Intern class which implements ActionListener, performed when the Delete button is pressed.
+	 */
 	private class DeleteStudentListener implements ActionListener {
 
 		// Attributes
 
+		/**
+		 * The FormPanel to update once the action is performed.
+		 */
 		private FormPanel formPanel;
 
 		// Constructor
 
+		/**
+		 * Creates a new DeleteStudentListener.
+		 * @param formPanel The FormPanel to update once the action is performed
+		 */
 		DeleteStudentListener(FormPanel formPanel) {
 			this.formPanel = formPanel;
 		}

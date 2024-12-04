@@ -52,6 +52,8 @@ public class PieChartPanel extends JInternalFrame implements Observer {
 
 	@Override
 	public void update() {
+
+		this.dataset.clear();
 		
 		this.graduatedClass.getData().forEach( (student) -> {
 

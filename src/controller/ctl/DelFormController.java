@@ -9,14 +9,28 @@ import view.popup.ErrorPopup;
 
 import java.util.ArrayList;
 
+/**
+ * This class extends the {@link controller.AbstractController} and is used from the formPanel
+ * to delete a {@link model.GraduatedStudent GraduatedStudent} from the {@link model.GraduatedClass GraduatedClass}
+ * 
+ * @author Luc le Manifik 
+ */
 public class DelFormController extends AbstractController {
 
 	// Attributes
 
+	/**
+	 * The FormPanel that will be updated after deleting a new student.
+	 */
 	private FormPanel formPanel;
 
 	// Constructor
 
+	/**
+	 * Creates a new DelFormController.
+	 * @param graduatedClass The GraduatedClass from which the student will be removed
+	 * @param formPanel The FormPanel which will be updated after deleting a student
+	 */
 	public DelFormController(GraduatedClass graduatedClass, FormPanel formPanel) {
 		super(graduatedClass);
 		this.formPanel = formPanel;

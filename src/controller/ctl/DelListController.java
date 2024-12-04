@@ -10,6 +10,10 @@ public class DelListController extends AbstractController {
 
 	// Controller
 
+	/**
+	 * Creates a new DelListController.
+	 * @param graduatedClass The GraduatedClass from which the student will be removed.
+	 */
 	public DelListController(GraduatedClass graduatedClass) {
 		super(graduatedClass);
 	}
