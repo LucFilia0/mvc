@@ -20,7 +20,7 @@ public class HistogramPanel extends JInternalFrame implements Observer {
 		// Constructor
 
 		Histogram(String title, DefaultCategoryDataset dataset) {
-			super(ChartFactory.createBarChart(title, "Bac", "Nombre", dataset, PlotOrientation.VERTICAL, true, false, false));
+			super(ChartFactory.createBarChart3D(title, "Bac", "Nombre", dataset, PlotOrientation.VERTICAL, true, false, false));
 		}
 	}
 	
